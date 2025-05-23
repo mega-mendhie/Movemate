@@ -9,11 +9,14 @@ import com.mendhie.movemate.data.models.SearchResult
 import com.mendhie.movemate.data.models.Shipment
 
 @Dao
-interface ShipmentDao {
+interface SearchDao {
 
     @Insert(onConflict = REPLACE)
-    suspend fun insertShipments(shipments: List<Shipment>)
+    suspend fun insertSearchResults(results: List<SearchResult>)
 
-    @Query("SELECT * FROM shipment_table")
-    fun getShipments(): LiveData<List<Shipment>>
+    @Query("SELECT * FROM search_table WHERE trackingNumber LIKE :searchQuery")
+    fun getSearchResults(searchQuery: String): LiveData<List<SearchResult>>
+
+    @Query("SELECT * FROM search_table")
+    fun getSearchResults(): LiveData<List<SearchResult>>
 }

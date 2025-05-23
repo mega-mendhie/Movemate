@@ -1,6 +1,5 @@
 package com.mendhie.movemate.data.database
 
-import android.util.Log
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.mendhie.movemate.data.models.SearchResult
@@ -20,20 +19,19 @@ import javax.inject.Provider
 abstract class MovemateDb: RoomDatabase() {
 
     abstract fun shipmentDao(): ShipmentDao
+    abstract fun searchDao(): SearchDao
 
     class DbCallback @Inject constructor(
         private val movemateDb: Provider<MovemateDb>,
         private val scope: CoroutineScope
     ): Callback(){
-        private val TAG = "MovemateDatabase"
 
         override fun onCreate(db: SupportSQLiteDatabase) {
             super.onCreate(db)
-            Log.d(TAG, "onCreate: db created - $db")
 
             scope.launch {
                 movemateDb.get().shipmentDao().insertShipments(shipments = shipments)
-                movemateDb.get().shipmentDao().insertSearchResults(results = searchResults)
+                movemateDb.get().searchDao().insertSearchResults(results = searchResults)
             }
 
         }

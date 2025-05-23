@@ -10,6 +10,11 @@ import androidx.navigation.fragment.findNavController
 import com.mendhie.movemate.databinding.FragmentCalculatorBinding
 
 
+/**
+ * Fragment that displays an animated count-up of an amount and a home button.
+ *
+ * Handles navigation back and animates the amount value on view creation.
+ */
 class CalculatorFragment : Fragment() {
     private lateinit var binding: FragmentCalculatorBinding
 
@@ -26,6 +31,10 @@ class CalculatorFragment : Fragment() {
         startCountAnimation()
         return binding.root
     }
+
+    /**
+     * Animates the displayed amount from 1000 to 1460 USD over 2 seconds.
+     */
 
     private fun startCountAnimation() {
         val animator = ValueAnimator.ofInt(1000, 1460) //0 is min number, 600 is max number

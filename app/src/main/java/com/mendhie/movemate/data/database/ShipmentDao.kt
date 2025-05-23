@@ -8,6 +8,11 @@ import androidx.room.Query
 import com.mendhie.movemate.data.models.SearchResult
 import com.mendhie.movemate.data.models.Shipment
 
+/**
+ * DAO for accessing [Shipment] data.
+ *
+ * Supports inserting and retrieving all shipments.
+ */
 @Dao
 interface ShipmentDao {
 

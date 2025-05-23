@@ -12,6 +12,13 @@ import com.mendhie.movemate.presentation.adapters.ShipmentAdapter
 import com.mendhie.movemate.presentation.viewmodels.ShipmentViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * Fragment that displays a list of shipments filtered by an optional status.
+ *
+ * Uses [ShipmentViewModel] to observe shipment data and updates the list accordingly.
+ *
+ * @param status Optional filter to show shipments matching the given status.
+ */
 @AndroidEntryPoint
 class HistoryAllFragment(private val status: String = "") : Fragment() {
     private lateinit var binding: FragmentHistoryAllBinding

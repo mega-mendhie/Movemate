@@ -11,10 +11,16 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
+/**
+ * Provides the Room database and DAOs as singletons for dependency injection.
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 object DatabaseModule {
 
+    /**
+     * Builds and provides the singleton instance of [MovemateDb].
+     */
     @Singleton
     @Provides
     fun providesDatabase(app: Application, callback: MovemateDb.DbCallback): MovemateDb {
@@ -24,12 +30,18 @@ object DatabaseModule {
             .build()
     }
 
+    /**
+     * Provides the singleton instance of [ShipmentDao].
+     */
     @Singleton
     @Provides
     fun providesShipmentDao(db: MovemateDb): ShipmentDao {
         return db.shipmentDao()
     }
 
+    /**
+     * Provides the singleton instance of [SearchDao].
+     */
     @Singleton
     @Provides
     fun providesSearchDao(db: MovemateDb): SearchDao {

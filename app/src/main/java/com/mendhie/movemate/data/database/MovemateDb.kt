@@ -11,6 +11,12 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Provider
 
+/**
+ * Room database for the Movemate app.
+ *
+ * Stores [Shipment] and [SearchResult] entities, and provides DAOs to access them.
+ * Includes a [DbCallback] to prepopulate data on first creation.
+ */
 @androidx.room.Database(
     entities = [Shipment::class, SearchResult::class],
     version = 1,

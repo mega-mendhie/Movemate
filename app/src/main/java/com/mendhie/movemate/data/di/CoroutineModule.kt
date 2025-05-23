@@ -8,6 +8,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import javax.inject.Singleton
 
+/**
+ * Provides a singleton [CoroutineScope] with a [SupervisorJob] for app-wide coroutine management.
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 object CoroutineModule {

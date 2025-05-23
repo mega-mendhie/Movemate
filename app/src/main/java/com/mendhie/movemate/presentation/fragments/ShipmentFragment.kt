@@ -13,7 +13,13 @@ import com.mendhie.movemate.databinding.FragmentShipmentBinding
 import com.mendhie.movemate.presentation.adapters.ViewPagerAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
-
+/**
+ * Fragment that displays shipment categories in tabs with counts and handles navigation.
+ *
+ * Sets up a ViewPager with multiple filtered HistoryAllFragment instances,
+ * customizes tab views with titles and unread counts,
+ * and configures toolbar navigation.
+ */
 @AndroidEntryPoint
 class ShipmentFragment : Fragment() {
     private lateinit var binding: FragmentShipmentBinding
@@ -39,6 +45,10 @@ class ShipmentFragment : Fragment() {
         return binding.root
     }
 
+
+    /**
+     * Sets up the ViewPager with HistoryAllFragment instances filtered by shipment status.
+     */
     private fun setupViewPager(viewPager: ViewPager) {
         val adapter = ViewPagerAdapter(childFragmentManager)
         adapter.addFragment(HistoryAllFragment(), "All")
@@ -49,6 +59,12 @@ class ShipmentFragment : Fragment() {
         viewPager.adapter = adapter
     }
 
+    /**
+     * Prepares a custom tab view with title and unread count badge.
+     *
+     * @param pos Position of the tab
+     * @return Configured tab view
+     */
     private fun prepareTabView(pos: Int): View {
         val view: View = layoutInflater.inflate(R.layout.custom_tab, null)
         val tv_title = view.findViewById<View>(R.id.tv_title) as TextView
@@ -61,14 +77,12 @@ class ShipmentFragment : Fragment() {
         return view
     }
 
+    /**
+     * Applies custom views with titles and counts to all tabs.
+     */
     private fun setupTabIcons() {
         for (i in 0 until tabTitle.size) {
-            /*TabLayout.Tab tabitem = tabLayout.newTab();
-            tabitem.setCustomView(prepareTabView(i));
-            tabLayout.addTab(tabitem);*/
             binding.tabShipment.getTabAt(i)?.setCustomView(prepareTabView(i))
         }
     }
-
-
 }

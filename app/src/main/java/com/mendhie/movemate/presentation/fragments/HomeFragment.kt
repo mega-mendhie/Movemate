@@ -14,6 +14,12 @@ import com.mendhie.movemate.data.models.Vehicle
 import com.mendhie.movemate.databinding.FragmentHomeBinding
 import com.mendhie.movemate.presentation.adapters.VehicleAdapter
 
+/**
+ * Fragment displaying a search trigger and a horizontal list of vehicles.
+ *
+ * Handles navigation to the search screen with shared element transition,
+ * and shows a list of freight vehicle types.
+ */
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
 
@@ -21,7 +27,6 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(inflater)
 
         binding.txtSearch.setOnClickListener {

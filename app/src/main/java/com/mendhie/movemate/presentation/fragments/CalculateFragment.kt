@@ -13,7 +13,11 @@ import com.mendhie.movemate.R
 import com.mendhie.movemate.databinding.FragmentCalculateBinding
 import com.mendhie.movemate.presentation.adapters.CategoryAdapter
 
-
+/**
+ * Fragment that displays a list of categories and a calculate button.
+ *
+ * Sets up the toolbar, category list with Flexbox layout, and navigation actions.
+ */
 class CalculateFragment : Fragment() {
     private lateinit var binding: FragmentCalculateBinding
 
@@ -41,7 +45,5 @@ class CalculateFragment : Fragment() {
         }
         return binding.root
     }
-
-
 
 }

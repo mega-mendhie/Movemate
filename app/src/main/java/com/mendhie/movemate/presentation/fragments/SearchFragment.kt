@@ -17,6 +17,12 @@ import com.mendhie.movemate.presentation.adapters.SearchAdapter
 import com.mendhie.movemate.presentation.viewmodels.SearchViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * Fragment that provides a searchable list of [SearchResult] items.
+ *
+ * Sets up RecyclerView with adapter, observes default and filtered search results,
+ * and handles UI updates based on user input.
+ */
 @AndroidEntryPoint
 class SearchFragment : Fragment() {
     private var _binding: FragmentSearchBinding? = null
@@ -26,6 +32,10 @@ class SearchFragment : Fragment() {
     private val adapter = SearchAdapter()
 
 
+    /**
+     * Inflates the layout, initializes RecyclerView and observes default search results.
+     * Sets up back navigation and search input observation.
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -60,6 +70,10 @@ class SearchFragment : Fragment() {
         return binding.root
     }
 
+    /**
+     * Observes text changes in the search input to filter search results dynamically.
+     * Displays default results when query is empty.
+     */
     private fun observeSearchEditText() {
         binding.edtSearch.doOnTextChanged { _, _, _, _ ->
             val query = binding.edtSearch.text.toString().trim()

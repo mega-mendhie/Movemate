@@ -8,6 +8,11 @@ import androidx.room.Query
 import com.mendhie.movemate.data.models.SearchResult
 import com.mendhie.movemate.data.models.Shipment
 
+/**
+ * DAO for accessing [SearchResult] data.
+ *
+ * Supports inserting and querying search results by tracking number or all entries.
+ */
 @Dao
 interface SearchDao {
 
